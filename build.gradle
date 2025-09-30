@@ -116,14 +116,17 @@ minecraft {
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
+    maven {
+        url "https://cursemaven.com"
+        content {
+            includeGroup "curse.maven"
+        }
+    }
     maven { url = "https://maven.createmod.net" } // Create, Ponder, Flywheel
     maven { url = "https://maven.tterrag.com" } // Registrate
 
-    //JEI
 
-    maven {
-        url "https://cursemaven.com"
-    }
+
 
     maven {
 
@@ -147,6 +150,9 @@ repositories {
     }
 
     maven { url = "https://raw.githubusercontent.com/Fuzss/modresources/main/maven/" } // ForgeConfigAPIPort
+
+
+
 }
 
 mixin {
@@ -183,10 +189,13 @@ dependencies {
 
 
     implementation fg.deobf("curse.maven:create-crowns-968670:6999893")
+
+    implementation fg.deobf("curse.maven:createaddition-439890:6901922")
+
     implementation fg.deobf("curse.maven:more-create-burners-1111030:6603569")
 
     runtimeOnly fg.deobf("curse.maven:pneumaticcraft-repressurized-281849:6142963")
-    runtimeOnly fg.deobf("curse.maven:createaddition-439890:6256349")
+
 
 
     // Example mod dependency using a mod jar from ./libs with a flat dir repository

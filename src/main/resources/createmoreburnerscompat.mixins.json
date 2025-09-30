@@ -5,10 +5,12 @@
   "package": "com.bikerboys.createmoreburnerscompat.mixin",
   "compatibilityLevel": "JAVA_17",
   "refmap": "createmoreburnerscompat.refmap.json",
+  "plugin": "com.bikerboys.createmoreburnerscompat.mixin.MixinPluginCreateCrowns",
   "mixins": [
     "ElectricBurnerBlockEntityMixin",
     "EmberBurnerBlockEntityMixin",
-    "HeatConverterBlockEntityMixin"
+    "HeatConverterBlockEntityMixin",
+    "LiquidBlazeBurnerMixin"
   ],
   "client": [
   ],
