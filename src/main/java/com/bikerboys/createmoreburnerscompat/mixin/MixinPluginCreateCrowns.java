@@ -1,8 +1,9 @@
 package com.bikerboys.createmoreburnerscompat.mixin;
 
-import net.minecraftforge.fml.ModList;
-import net.minecraftforge.fml.loading.FMLLoader;
-import net.minecraftforge.fml.loading.moddiscovery.ModFileInfo;
+
+import net.neoforged.fml.*;
+import net.neoforged.fml.loading.*;
+import net.neoforged.fml.loading.moddiscovery.*;
 import org.objectweb.asm.tree.ClassNode;
 import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
 import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
@@ -24,7 +25,7 @@ public class MixinPluginCreateCrowns implements IMixinConfigPlugin {
     @Override
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
 
-        ModFileInfo crowns = FMLLoader.getLoadingModList().getModFileById("crowns");
+        ModFileInfo crowns = net.neoforged.fml.loading.FMLLoader.getLoadingModList().getModFileById("crowns");
         ModFileInfo moreburners = FMLLoader.getLoadingModList().getModFileById("moreburners");
         ModFileInfo createaddition = FMLLoader.getLoadingModList().getModFileById("createaddition");
         ModFileInfo thefactorymustgrow = FMLLoader.getLoadingModList().getModFileById("tfmg");

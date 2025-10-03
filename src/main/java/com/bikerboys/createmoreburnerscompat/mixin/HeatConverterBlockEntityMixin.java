@@ -2,8 +2,7 @@ package com.bikerboys.createmoreburnerscompat.mixin;
 
 import com.rae.crowns.content.thermodynamics.conduction.IHaveTemperature;
 import com.simibubi.create.content.processing.burner.BlazeBurnerBlock;
-import net.dragonegg.moreburners.content.block.entity.BaseBurnerBlockEntity;
-import net.dragonegg.moreburners.content.block.entity.EmberBurnerBlockEntity;
+
 import net.dragonegg.moreburners.content.block.entity.HeatConverterBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.entity.BlockEntityType;
