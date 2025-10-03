@@ -193,6 +193,7 @@ dependencies {
     implementation fg.deobf("curse.maven:createaddition-439890:6901922")
 
     implementation fg.deobf("curse.maven:more-create-burners-1111030:6603569")
+    implementation fg.deobf("curse.maven:create-industry-693815:6816350")
 
     runtimeOnly fg.deobf("curse.maven:pneumaticcraft-repressurized-281849:6142963")
 

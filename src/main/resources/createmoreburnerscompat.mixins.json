@@ -9,6 +9,7 @@
   "mixins": [
     "ElectricBurnerBlockEntityMixin",
     "EmberBurnerBlockEntityMixin",
+    "FireBoxMixin",
     "HeatConverterBlockEntityMixin",
     "LiquidBlazeBurnerMixin"
   ],

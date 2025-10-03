@@ -27,10 +27,12 @@ public class MixinPluginCreateCrowns implements IMixinConfigPlugin {
         ModFileInfo crowns = FMLLoader.getLoadingModList().getModFileById("crowns");
         ModFileInfo moreburners = FMLLoader.getLoadingModList().getModFileById("moreburners");
         ModFileInfo createaddition = FMLLoader.getLoadingModList().getModFileById("createaddition");
+        ModFileInfo thefactorymustgrow = FMLLoader.getLoadingModList().getModFileById("tfmg");
 
         boolean crownsLoaded = crowns != null;
         boolean moreburnersLoaded = moreburners != null;
         boolean createadditionLoaded = createaddition != null;
+        boolean tfmgLoaded = thefactorymustgrow != null;
 
 
 
@@ -45,6 +47,13 @@ public class MixinPluginCreateCrowns implements IMixinConfigPlugin {
         if (mixinClassName.endsWith("LiquidBlazeBurnerMixin")) {
             return createadditionLoaded && crownsLoaded;
         }
+
+        if (mixinClassName.endsWith("FireBoxMixin")) {
+
+            System.out.println("LOADING IT UP YAY");
+            return tfmgLoaded;
+        }
+
 
         return false; // default: apply
     }
