@@ -159,8 +159,7 @@ mixin {
     add sourceSets.main, 'createmoreburnerscompat.refmap.json'
     config 'createmoreburnerscompat.mixins.json'
 
-    //debug.verbose = true
-    //debug.export = true
+
 }
 
 

@@ -13,9 +13,9 @@ import com.tterrag.registrate.util.entry.*;
 import net.minecraft.world.level.block.state.*;
 import org.spongepowered.asm.mixin.*;
 
-@Debug(export = true)
-@Mixin(BlockInit.class)
+@Mixin(value = BlockEntityInit.class, remap = false)
 public class MixinBlockEntityInit {
+
 
 
     @Shadow @Final
@@ -25,5 +25,6 @@ public class MixinBlockEntityInit {
             .validBlock(BlockInit.TURBINE_STAGE)
             .renderer(() -> TurbineStageRenderer::new)
             .register();
+
 
 }

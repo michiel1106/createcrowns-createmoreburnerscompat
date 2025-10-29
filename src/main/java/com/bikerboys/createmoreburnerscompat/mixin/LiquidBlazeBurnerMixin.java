@@ -8,7 +8,7 @@ import com.simibubi.create.content.processing.burner.BlazeBurnerBlock;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 
-@Mixin(LiquidBlazeBurnerBlockEntity.class)
+@Mixin(value = LiquidBlazeBurnerBlockEntity.class, remap = false)
 public abstract class LiquidBlazeBurnerMixin implements IHaveTemperature {
     @Shadow public abstract BlazeBurnerBlock.HeatLevel getHeatLevelFromBlock();
 

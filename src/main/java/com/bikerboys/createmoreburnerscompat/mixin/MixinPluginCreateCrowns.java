@@ -23,39 +23,32 @@ public class MixinPluginCreateCrowns implements IMixinConfigPlugin {
 
     @Override
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
-
         ModFileInfo crowns = FMLLoader.getLoadingModList().getModFileById("crowns");
         ModFileInfo moreburners = FMLLoader.getLoadingModList().getModFileById("moreburners");
         ModFileInfo createaddition = FMLLoader.getLoadingModList().getModFileById("createaddition");
-        ModFileInfo thefactorymustgrow = FMLLoader.getLoadingModList().getModFileById("tfmg");
+        ModFileInfo tfmg = FMLLoader.getLoadingModList().getModFileById("tfmg");
 
         boolean crownsLoaded = crowns != null;
         boolean moreburnersLoaded = moreburners != null;
         boolean createadditionLoaded = createaddition != null;
-        boolean tfmgLoaded = thefactorymustgrow != null;
+        boolean tfmgLoaded = tfmg != null;
 
-
-
-        // --- More Burners mixins ---
         if (mixinClassName.endsWith("ElectricBurnerBlockEntityMixin")
                 || mixinClassName.endsWith("EmberBurnerBlockEntityMixin")
                 || mixinClassName.endsWith("HeatConverterBlockEntityMixin")) {
             return moreburnersLoaded && crownsLoaded;
         }
 
-        // --- Create Addition (Liquid Blaze Burner) mixin ---
         if (mixinClassName.endsWith("LiquidBlazeBurnerMixin")) {
             return createadditionLoaded && crownsLoaded;
         }
 
         if (mixinClassName.endsWith("FireBoxMixin")) {
-
             System.out.println("LOADING IT UP YAY");
             return tfmgLoaded;
         }
 
-
-        return false; // default: apply
+        return true;
     }
 
 

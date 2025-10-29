@@ -12,13 +12,14 @@ import net.minecraft.world.level.block.state.*;
 import net.minecraft.world.phys.*;
 import org.spongepowered.asm.mixin.*;
 
-@Debug(export = true)
-@Mixin(TurbineStageBlockEntity.class)
+@Mixin(value = TurbineStageBlockEntity.class, remap = false)
 public abstract class TurbineStageBlockEntityMixin extends GeneratingKineticBlockEntity implements ISteamPressureChange, ITurbineStageBlockEntityMixin {
 
 
-    public LerpedFloat visualSpeed = LerpedFloat.linear();
-    public float angle;
+    @Unique
+    public LerpedFloat morecompat$visualSpeed = LerpedFloat.linear();
+    @Unique
+    public float morecompat$angle;
 
     public TurbineStageBlockEntityMixin(BlockEntityType<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
@@ -31,7 +32,7 @@ public abstract class TurbineStageBlockEntityMixin extends GeneratingKineticBloc
 
     protected void readFl(CompoundTag compound, boolean clientPacket) {
         if (clientPacket)
-            visualSpeed.chase(getGeneratedSpeed(), 1 / 64f, LerpedFloat.Chaser.EXP);
+            morecompat$visualSpeed.chase(getGeneratedSpeed(), 1 / 64f, LerpedFloat.Chaser.EXP);
     }
 
     public void tickFl() {
@@ -40,26 +41,26 @@ public abstract class TurbineStageBlockEntityMixin extends GeneratingKineticBloc
             return;
 
         float targetSpeed = getSpeed();
-        visualSpeed.updateChaseTarget(targetSpeed);
-        visualSpeed.tickChaser();
-        angle += visualSpeed.getValue() * 3 / 10f;
-        angle %= 360;
+        morecompat$visualSpeed.updateChaseTarget(targetSpeed);
+        morecompat$visualSpeed.tickChaser();
+        morecompat$angle += morecompat$visualSpeed.getValue() * 3 / 10f;
+        morecompat$angle %= 360;
     }
 
 
     @Override
-    public LerpedFloat getVisualSpeed() {
-        return visualSpeed;
+    public LerpedFloat morecompat$getVisualSpeed() {
+        return morecompat$visualSpeed;
     }
 
     @Override
-    public void setAngle(float angle) {
-        this.angle = angle;
+    public void morecompat$setAngle(float angle) {
+        this.morecompat$angle = angle;
     }
 
     @Override
-    public float getAngle() {
-        return angle;
+    public float morecompat$getAngle() {
+        return morecompat$angle;
     }
 
 

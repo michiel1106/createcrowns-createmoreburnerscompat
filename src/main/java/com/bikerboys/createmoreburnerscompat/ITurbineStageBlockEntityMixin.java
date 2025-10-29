@@ -5,19 +5,20 @@ import net.createmod.catnip.animation.*;
 import org.spongepowered.asm.mixin.*;
 
 
+
 public interface ITurbineStageBlockEntityMixin {
     @Unique
-    public LerpedFloat visualSpeed = LerpedFloat.linear();
+    public LerpedFloat morecompat$visualSpeed = LerpedFloat.linear();
     @Unique
     public float angle = 0;
 
 
-    public default LerpedFloat getVisualSpeed() {
-        return visualSpeed;
+    public default LerpedFloat morecompat$getVisualSpeed() {
+        return morecompat$visualSpeed;
     }
 
-    public void setAngle(float angle1);
+    public void morecompat$setAngle(float angle1);
 
-    public float getAngle();
+    public float morecompat$getAngle();
 
 }
