@@ -192,11 +192,13 @@ dependencies {
     implementation fg.deobf("curse.maven:createaddition-439890:6901922")
 
     implementation fg.deobf("curse.maven:more-create-burners-1111030:6603569")
-    implementation fg.deobf("curse.maven:create-industry-693815:6816350")
 
+    // create: the factory must grow
+    implementation fg.deobf("curse.maven:create-industry-693815:7344584")
     runtimeOnly fg.deobf("curse.maven:pneumaticcraft-repressurized-281849:6142963")
 
-
+    implementation fg.deobf("curse.maven:power-grid-1321420:7411795")
+    implementation fg.deobf("curse.maven:architectury-api-419699:5137938")
 
     // Example mod dependency using a mod jar from ./libs with a flat dir repository
     // This maps to ./libs/coolmod-${mc_version}-${coolmod_version}.jar

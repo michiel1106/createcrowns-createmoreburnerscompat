@@ -26,11 +26,13 @@ public class MixinPluginCreateCrowns implements IMixinConfigPlugin {
         ModFileInfo crowns = FMLLoader.getLoadingModList().getModFileById("crowns");
         ModFileInfo moreburners = FMLLoader.getLoadingModList().getModFileById("moreburners");
         ModFileInfo createaddition = FMLLoader.getLoadingModList().getModFileById("createaddition");
+        ModFileInfo powergrid = FMLLoader.getLoadingModList().getModFileById("powergrid");
         ModFileInfo tfmg = FMLLoader.getLoadingModList().getModFileById("tfmg");
 
         boolean crownsLoaded = crowns != null;
         boolean moreburnersLoaded = moreburners != null;
         boolean createadditionLoaded = createaddition != null;
+        boolean powergridLoaded = powergrid != null;
         boolean tfmgLoaded = tfmg != null;
 
         if (mixinClassName.endsWith("ElectricBurnerBlockEntityMixin")
@@ -46,6 +48,10 @@ public class MixinPluginCreateCrowns implements IMixinConfigPlugin {
         if (mixinClassName.endsWith("FireBoxMixin")) {
             System.out.println("LOADING IT UP YAY");
             return tfmgLoaded;
+        }
+
+        if (mixinClassName.endsWith("BasinHeaterBlockEntityMixin")) {
+            return powergridLoaded;
         }
 
         return true;
