@@ -12,10 +12,7 @@
     "EmberBurnerBlockEntityMixin",
     "FireBoxMixin",
     "HeatConverterBlockEntityMixin",
-    "LiquidBlazeBurnerMixin",
-    "MixinBlockEntityInit",
-    "TurbineStageBlockEntityMixin",
-    "TurbineStageRendererMixin"
+    "LiquidBlazeBurnerMixin"
   ],
   "client": [
   ],

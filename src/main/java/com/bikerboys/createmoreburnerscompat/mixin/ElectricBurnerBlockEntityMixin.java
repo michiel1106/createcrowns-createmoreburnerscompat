@@ -1,6 +1,6 @@
 package com.bikerboys.createmoreburnerscompat.mixin;
 
-import com.rae.crowns.content.thermodynamics.conduction.IHaveTemperature;
+import com.rae.crowns.content.thermodynamics.*;
 import net.dragonegg.moreburners.content.block.entity.BaseBurnerBlockEntity;
 import net.dragonegg.moreburners.content.block.entity.ElectricBurnerBlockEntity;
 import net.minecraft.core.BlockPos;
