@@ -3,14 +3,14 @@ package com.bikerboys.createmoreburnerscompat.rendering;
 import java.util.function.Consumer;
 
 import com.bikerboys.createmoreburnerscompat.*;
+import com.simibubi.create.content.kinetics.base.*;
+import net.minecraft.world.level.block.entity.*;
 import org.joml.Matrix4f;
 import org.joml.Quaternionf;
 
 import com.rae.crowns.content.thermodynamics.turbine.TurbineStageBlockEntity;
 import com.rae.crowns.init.client.PartialModelInit;
 import com.simibubi.create.AllPartialModels;
-import com.simibubi.create.content.kinetics.base.KineticBlockEntityVisual;
-import com.simibubi.create.content.kinetics.base.RotatingInstance;
 import com.simibubi.create.foundation.render.AllInstanceTypes;
 
 import dev.engine_room.flywheel.api.instance.Instance;
@@ -31,8 +31,8 @@ public class CustomFanVisual extends KineticBlockEntityVisual<TurbineStageBlockE
 
 	protected final Matrix4f baseTransform = new Matrix4f();
 
-	public CustomFanVisual(VisualizationContext context, TurbineStageBlockEntity blockEntity, float partialTick) {
-		super(context, blockEntity, partialTick);
+	public CustomFanVisual(VisualizationContext context, BlockEntity blockEntity, float partialTick) {
+		super(context, (TurbineStageBlockEntity) blockEntity, partialTick);
 
 
 

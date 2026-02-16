@@ -186,8 +186,9 @@ dependencies {
     implementation("io.github.llamalad7:mixinextras-forge:0.4.1")
     annotationProcessor "org.spongepowered:mixin:${mixin_version}:processor"
 
+    implementation fg.deobf("curse.maven:formicapi-1282701:7568227")
 
-    implementation fg.deobf("curse.maven:create-crowns-968670:6999893")
+    implementation fg.deobf("curse.maven:create-crowns-968670:7571134")
 
     implementation fg.deobf("curse.maven:createaddition-439890:6901922")
 

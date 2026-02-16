@@ -2,6 +2,7 @@ package com.bikerboys.createmoreburnerscompat.mixin;
 
 
 import com.bikerboys.createmoreburnerscompat.*;
+import com.rae.crowns.content.thermodynamics.*;
 import com.rae.crowns.content.thermodynamics.turbine.*;
 import com.simibubi.create.content.kinetics.base.*;
 import net.createmod.catnip.animation.*;
@@ -16,6 +17,7 @@ import org.spongepowered.asm.mixin.*;
 public abstract class TurbineStageBlockEntityMixin extends GeneratingKineticBlockEntity implements ISteamPressureChange, ITurbineStageBlockEntityMixin {
 
 
+
     @Unique
     public LerpedFloat morecompat$visualSpeed = LerpedFloat.linear();
     @Unique
@@ -24,6 +26,7 @@ public abstract class TurbineStageBlockEntityMixin extends GeneratingKineticBloc
     public TurbineStageBlockEntityMixin(BlockEntityType<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
     }
+
 
     @Override
     protected AABB createRenderBoundingBox() {

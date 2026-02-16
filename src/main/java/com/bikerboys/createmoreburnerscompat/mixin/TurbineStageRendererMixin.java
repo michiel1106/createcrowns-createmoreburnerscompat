@@ -12,6 +12,7 @@ import net.createmod.catnip.render.*;
 import net.minecraft.client.renderer.*;
 import net.minecraft.client.renderer.blockentity.*;
 import net.minecraft.core.*;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.*;
 import org.spongepowered.asm.mixin.*;
 import org.spongepowered.asm.mixin.injection.*;
@@ -24,6 +25,7 @@ public class TurbineStageRendererMixin extends KineticBlockEntityRenderer<Turbin
     public TurbineStageRendererMixin(BlockEntityRendererProvider.Context context) {
         super(context);
     }
+
 
     @Inject(method = "renderSafe(Lcom/rae/crowns/content/thermodynamics/turbine/TurbineStageBlockEntity;FLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;II)V", at = @At("HEAD"), cancellable = true)
     private void renderSafeMixin(TurbineStageBlockEntity be, float partialTicks, PoseStack ms, MultiBufferSource buffer, int light, int overlay, CallbackInfo ci) {
@@ -45,16 +47,42 @@ public class TurbineStageRendererMixin extends KineticBlockEntityRenderer<Turbin
         ci.cancel();
     }
 
-    private void renderFlywheel(TurbineStageBlockEntity be, PoseStack ms, int light, BlockState blockState, float angle,
-                                VertexConsumer vb) {
-        SuperByteBuffer wheel = CachedBuffers.block(blockState);
-        BlockState state = be.getBlockState();
-        Direction direction =  Direction.fromAxisAndDirection(((TurbineStageBlock)state.getBlock()).getRotationAxis(state), Direction.AxisDirection.POSITIVE);
+    private void renderFlywheel(
+            TurbineStageBlockEntity be,
+            PoseStack ms,
+            int light,
+            BlockState state,
+            float angle,
+            VertexConsumer vb
+    ) {
+        Block block = state.getBlock();
+        if (!(block instanceof TurbineStageBlock turbine)) {
+            return;
+        }
+
+        Direction direction = Direction.fromAxisAndDirection(
+                turbine.getRotationAxis(state),
+                Direction.AxisDirection.POSITIVE
+        );
+
         SuperByteBuffer memoryRoll =
-                CachedBuffers.partialFacing(PartialModelInit.TURBINE_STAGE, be.getBlockState(), direction.getOpposite());
-        kineticRotationTransform(memoryRoll, be, getRotationAxisOf(be), AngleHelper.rad(angle), light);
+                CachedBuffers.partialFacing(
+                        PartialModelInit.TURBINE_STAGE,
+                        state,
+                        direction.getOpposite()
+                );
+
+        kineticRotationTransform(
+                memoryRoll,
+                be,
+                getRotationAxisOf(be),
+                AngleHelper.rad(angle),
+                light
+        );
+
         memoryRoll.renderInto(ms, vb);
     }
+
 
     @Override
     protected BlockState getRenderedBlockState(TurbineStageBlockEntity be) {

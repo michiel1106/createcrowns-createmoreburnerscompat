@@ -1,6 +1,6 @@
 package com.bikerboys.createmoreburnerscompat.mixin;
 
-import com.rae.crowns.content.thermodynamics.conduction.*;
+import com.rae.crowns.content.thermodynamics.*;
 import com.simibubi.create.content.processing.burner.*;
 import org.patryk3211.powergrid.electricity.basinheater.*;
 import org.spongepowered.asm.mixin.*;

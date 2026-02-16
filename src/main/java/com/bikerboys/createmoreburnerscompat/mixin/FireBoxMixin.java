@@ -2,7 +2,7 @@ package com.bikerboys.createmoreburnerscompat.mixin;
 
 
 import com.drmangotea.tfmg.content.machinery.misc.firebox.*;
-import com.rae.crowns.content.thermodynamics.conduction.*;
+import com.rae.crowns.content.thermodynamics.*;
 import com.simibubi.create.content.processing.burner.*;
 import static com.simibubi.create.content.processing.burner.BlazeBurnerBlock.HeatLevel.*;
 
