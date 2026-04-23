@@ -11,16 +11,16 @@ import net.neoforged.neoforge.event.server.*;
 import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
-@Mod(CreateMoreBurnersCompat.MODID)
-public class CreateMoreBurnersCompat
+@Mod(Alexsimprovements.MODID)
+public class Alexsimprovements
 {
     // Define mod id in a common place for everything to reference
-    public static final String MODID = "createmoreburnerscompat";
+    public static final String MODID = "alexsimprovements";
     // Directly reference a slf4j logger
     private static final Logger LOGGER = LogUtils.getLogger();
     // Create a Deferred Register to hold Blocks which will all be registered under the "examplemod" namespace
 
-    public CreateMoreBurnersCompat(IEventBus eventBus, ModContainer container)
+    public Alexsimprovements(IEventBus eventBus, ModContainer container)
     {
 
 

@@ -183,17 +183,22 @@ dependencies {
 
 
 
+    implementation "curse.maven:power-grid-1321420:7714634"
+
     compileOnly(annotationProcessor("io.github.llamalad7:mixinextras-common:0.4.1"))
 
     annotationProcessor "org.spongepowered:mixin:${mixin_version}:processor"
 
 
-    implementation "curse.maven:create-crowns-968670:6976187"
+    implementation "curse.maven:create-crowns-968670:7967238"
+    implementation "curse.maven:formicapi-1282701:7967253"
 
-    implementation "curse.maven:createaddition-439890:6960656"
+    implementation "curse.maven:architectury-api-419699:5786327"
+
+    implementation "curse.maven:createaddition-439890:7518252"
 
     implementation "curse.maven:more-create-burners-1111030:6740366"
-    implementation "curse.maven:create-industry-693815:7046723"
+    implementation "curse.maven:create-industry-693815:7430073"
 
     runtimeOnly "curse.maven:pneumaticcraft-repressurized-281849:6817362"
 
