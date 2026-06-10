@@ -24,11 +24,11 @@ public class BasinHeaterBlockEntityMixin implements IHaveTemperature {
     @Override
     public float getTemperature() {
         return switch (state){
-            case NONE -> 300f;
             case SMOULDERING -> 500F;
-            case FADING -> 900F;
-            case KINDLED -> 1800F;
-            case SEETHING -> 3000F;
+            case FADING -> 600F;
+            case KINDLED -> 1200F;
+            case SEETHING -> 1600F;
+            default -> 300f;
         };
     }
 

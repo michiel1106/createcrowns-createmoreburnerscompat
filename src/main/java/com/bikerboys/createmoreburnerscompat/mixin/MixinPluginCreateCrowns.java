@@ -41,8 +41,8 @@ public class MixinPluginCreateCrowns implements IMixinConfigPlugin {
 
         // --- More Burners mixins ---
         if (mixinClassName.endsWith("ElectricBurnerBlockEntityMixin")
-                || mixinClassName.endsWith("EmberBurnerBlockEntityMixin")
                 || mixinClassName.endsWith("HeatConverterBlockEntityMixin")) {
+            System.out.println(moreburnersLoaded + " " + crownsLoaded);
             return moreburnersLoaded && crownsLoaded;
         }
 

@@ -29,9 +29,11 @@ public class FireBoxMixin implements IHaveTemperature {
         BlazeBurnerBlock.HeatLevel value = entity.getBlockState().getValue(FireboxBlock.HEAT_LEVEL);
 
         return switch (value) {
-            case NONE -> 300f;
-            case SMOULDERING -> 900;
-            default -> 3000f;
+            case SMOULDERING -> 500F;
+            case FADING -> 600F;
+            case KINDLED -> 1200F;
+            case SEETHING -> 1600F;
+            default -> 300f;
         };
     }
 
