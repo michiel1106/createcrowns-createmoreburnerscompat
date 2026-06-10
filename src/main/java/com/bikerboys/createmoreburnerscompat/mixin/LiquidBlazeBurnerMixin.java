@@ -26,7 +26,6 @@ public abstract class LiquidBlazeBurnerMixin implements IHaveTemperature {
     public float getTemperature() {
 
 
-
         return switch (this.getHeatLevelFromBlock()){
             case SMOULDERING -> 500F;
             case FADING -> 600F;

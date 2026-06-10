@@ -9,13 +9,14 @@ import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import org.checkerframework.checker.units.qual.*;
-import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.*;
 
 import static com.simibubi.create.content.processing.burner.BlazeBurnerBlock.HeatLevel.*;
 import org.spongepowered.asm.mixin.injection.*;
 import org.spongepowered.asm.mixin.injection.callback.*;
 
 
+@Debug(export = true)
 @Mixin(ElectricBurnerBlockEntity.class)
 public abstract class ElectricBurnerBlockEntityMixin extends BaseBurnerBlockEntity implements IHaveTemperature {
     public ElectricBurnerBlockEntityMixin(BlockEntityType<?> type, BlockPos pos, BlockState state) {
@@ -34,13 +35,6 @@ public abstract class ElectricBurnerBlockEntityMixin extends BaseBurnerBlockEnti
         return 100000;
     }
 
-    @Inject(method = "tick", at = @At("HEAD"), remap = false)
-    private void onTick(Level level, BlockPos pos, BlockState state, CallbackInfo ci){
-        ElectricBurnerBlockEntity entity = (ElectricBurnerBlockEntity)(Object)this;
-
-        BlazeBurnerBlock.HeatLevel value = entity.getBlockState().getValue(BlazeBurnerBlock.HEAT_LEVEL);
-        System.out.println(value);
-    }
 
     @Override
     public float getTemperature() {
@@ -48,7 +42,6 @@ public abstract class ElectricBurnerBlockEntityMixin extends BaseBurnerBlockEnti
 
         BlazeBurnerBlock.HeatLevel value = entity.getBlockState().getValue(BlazeBurnerBlock.HEAT_LEVEL);
 
-        System.out.println("HEAT LEVEL" + value);
         return switch (value){
             case SMOULDERING -> 500F;
             case FADING -> 600F;

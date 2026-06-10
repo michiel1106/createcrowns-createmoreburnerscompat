@@ -195,12 +195,12 @@ dependencies {
 
     implementation "curse.maven:architectury-api-419699:5786327"
 
-    implementation "curse.maven:createaddition-439890:7518252"
+    implementation "curse.maven:createaddition-439890:8188476"
 
-    implementation "curse.maven:more-create-burners-1111030:6740366"
+    implementation "curse.maven:more-create-burners-1111030:7062699"
     implementation "curse.maven:create-industry-693815:7430073"
 
-    runtimeOnly "curse.maven:pneumaticcraft-repressurized-281849:6817362"
+    implementation "curse.maven:pneumaticcraft-repressurized-281849:8062194"
 
 
 
