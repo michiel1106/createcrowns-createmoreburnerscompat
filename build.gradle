@@ -190,7 +190,7 @@ dependencies {
     annotationProcessor "org.spongepowered:mixin:${mixin_version}:processor"
 
 
-    implementation "curse.maven:create-crowns-968670:8200994"
+    implementation "curse.maven:create-crowns-968670:8232276"
     implementation "curse.maven:formicapi-1282701:8218212"
 
     implementation "curse.maven:architectury-api-419699:5786327"
