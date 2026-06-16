@@ -5,9 +5,9 @@ import com.mrh0.createaddition.blocks.liquid_blaze_burner.LiquidBlazeBurnerBlock
 import com.mrh0.createaddition.blocks.liquid_blaze_burner.LiquidBlazeBurnerBlockEntity;
 import com.rae.crowns.content.thermodynamics.IHaveTemperature;
 import com.simibubi.create.content.processing.burner.BlazeBurnerBlock;
-import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.*;
 
+@Debug(export = true)
 @Mixin(LiquidBlazeBurnerBlockEntity.class)
 public abstract class LiquidBlazeBurnerMixin implements IHaveTemperature {
     @Shadow public abstract BlazeBurnerBlock.HeatLevel getHeatLevelFromBlock();

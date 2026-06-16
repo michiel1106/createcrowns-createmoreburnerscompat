@@ -11,7 +11,9 @@
     "ElectricBurnerBlockEntityMixin",
     "FireBoxMixin",
     "HeatConverterBlockEntityMixin",
-    "LiquidBlazeBurnerMixin"
+    "HeaterMixin",
+    "LiquidBlazeBurnerMixin",
+    "ResistiveHeaterBlockMixin"
   ],
   "client": [
   ],

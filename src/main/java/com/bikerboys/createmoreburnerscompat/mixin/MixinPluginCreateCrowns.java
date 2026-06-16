@@ -30,12 +30,16 @@ public class MixinPluginCreateCrowns implements IMixinConfigPlugin {
         ModFileInfo createaddition = FMLLoader.getLoadingModList().getModFileById("createaddition");
         ModFileInfo thefactorymustgrow = FMLLoader.getLoadingModList().getModFileById("tfmg");
         ModFileInfo powergrid = FMLLoader.getLoadingModList().getModFileById("powergrid");
+        ModFileInfo create_new_age = FMLLoader.getLoadingModList().getModFileById("create_new_age");
+        ModFileInfo electroenergetics = FMLLoader.getLoadingModList().getModFileById("electroenergetics");
 
         boolean crownsLoaded = crowns != null;
         boolean moreburnersLoaded = moreburners != null;
         boolean createadditionLoaded = createaddition != null;
         boolean powergridLoaded = powergrid != null;
         boolean tfmgLoaded = thefactorymustgrow != null;
+        boolean create_new_ageLoaded = create_new_age != null;
+        boolean electroenergeticsLoaded = electroenergetics != null;
 
 
 
@@ -45,6 +49,16 @@ public class MixinPluginCreateCrowns implements IMixinConfigPlugin {
             System.out.println(moreburnersLoaded + " " + crownsLoaded);
             return moreburnersLoaded && crownsLoaded;
         }
+
+        if (mixinClassName.endsWith("HeaterMixin")) {
+            return create_new_ageLoaded;
+        }
+
+        if (mixinClassName.endsWith("ResistiveHeaterBlockMixin")) {
+            return electroenergeticsLoaded;
+        }
+
+
 
         // --- Create Addition (Liquid Blaze Burner) mixin ---
         if (mixinClassName.endsWith("LiquidBlazeBurnerMixin")) {

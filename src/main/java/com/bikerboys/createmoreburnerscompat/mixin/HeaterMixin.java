@@ -1,49 +1,49 @@
 package com.bikerboys.createmoreburnerscompat.mixin;
 
-import com.rae.crowns.content.fields.util.*;
-import com.rae.crowns.content.thermodynamics.IHaveTemperature;
-import com.simibubi.create.content.processing.burner.BlazeBurnerBlock;
 
-import me.desht.pneumaticcraft.common.block.entity.*;
-import net.dragonegg.moreburners.content.block.entity.HeatConverterBlockEntity;
+import com.george_vi.electroenergetics.content.resistive_heater.*;
+import com.rae.crowns.content.fields.util.*;
+import com.rae.crowns.content.thermodynamics.*;
+import com.simibubi.create.content.processing.burner.*;
 import net.minecraft.core.*;
 import net.minecraft.server.level.*;
 import net.minecraft.world.level.block.entity.*;
-import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.*;
+import org.antarcticgardens.cna.content.heat.heater.*;
 import org.spongepowered.asm.mixin.*;
 import org.spongepowered.asm.mixin.injection.*;
 import org.spongepowered.asm.mixin.injection.callback.*;
 
-@Mixin(HeatConverterBlockEntity.class)
-public abstract class HeatConverterBlockEntityMixin extends AbstractTickingBlockEntity implements IHaveTemperature {
+@Mixin(HeaterBlockEntity.class)
+public abstract class HeaterMixin extends BlockEntity implements IHaveTemperature {
 
-
-    public HeatConverterBlockEntityMixin(BlockEntityType<?> type, BlockPos pos, BlockState state) {
-        super(type, pos, state);
+    public HeaterMixin(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
+        super(type, pos, blockState);
     }
-
-    @Shadow public abstract BlazeBurnerBlock.HeatLevel getHeatLevelFromBlock();
-
-
 
     @Unique
     boolean cROWNS_1_20_1$registrationDone = false;
 
-    @Inject(method = "tick", at = @At("TAIL"), remap = false)
-    private void onTick(CallbackInfo ci) {
-        BlockEntity self = (BlockEntity) (Object) this;
+
+    @Inject(method = "getHeat", at = @At("TAIL"), remap = false)
+    private void onTick(CallbackInfoReturnable<Float> cir) {
+
+        HeaterBlockEntity self = (HeaterBlockEntity)(Object)this;
+
         if (cROWNS_1_20_1$registrationDone) return;
 
         if (self instanceof IHaveTemperature ht && self.getLevel() instanceof ServerLevel serverLevel) {
             PhysicsWorldData data       = PhysicsSaveManager.get(serverLevel);
             BlockPos         pos        = self.getBlockPos();
-            SectionPos       sectionPos = SectionPos.of(pos);
+            SectionPos sectionPos = SectionPos.of(pos);
             if (data != null && PhysicsSaveManager.isLoaded(serverLevel.dimension(), sectionPos.asLong())) {
                 data.putDynamic(self.getBlockPos(), ht);
                 cROWNS_1_20_1$registrationDone = true;
             }
         } else cROWNS_1_20_1$registrationDone = true;
     }
+
+
 
 
     @Override
@@ -60,8 +60,6 @@ public abstract class HeatConverterBlockEntityMixin extends AbstractTickingBlock
 
     }
 
-
-
     @Override
     public float getThermalCapacity() {
         return 1000;
@@ -74,7 +72,13 @@ public abstract class HeatConverterBlockEntityMixin extends AbstractTickingBlock
 
     @Override
     public float getTemperature() {
-        return switch (getHeatLevelFromBlock()){
+
+
+        HeaterBlockEntity heater = (HeaterBlockEntity)(Object)this;
+
+        BlazeBurnerBlock.HeatLevel strength = heater.getBlockState().getValue(HeaterBlock.STRENGTH);
+
+        return switch (strength){
             case SMOULDERING -> 500F;
             case FADING -> 600F;
             case KINDLED -> 1200F;
@@ -88,4 +92,3 @@ public abstract class HeatConverterBlockEntityMixin extends AbstractTickingBlock
 
     }
 }
-
